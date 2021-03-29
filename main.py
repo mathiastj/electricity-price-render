@@ -33,7 +33,6 @@ normalizedPrices = [normalize(i['value']) for i in priceValues]
 
 # Create hours for x axis from 0-23
 hours = [x for x in range(24)]
-pprint(hours)
 
 # create bar chart
 plt.bar(hours,normalizedPrices)
