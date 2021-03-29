@@ -27,3 +27,7 @@ jobs:
     - name: Run main
       run: |
         python main.py
+    - name: Commit price chart
+      run: |
+        git commit -am "Updated price chart"
+        git push
