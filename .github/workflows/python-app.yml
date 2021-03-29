@@ -29,5 +29,7 @@ jobs:
         python main.py
     - name: Commit price chart
       run: |
+        git config --global user.name 'mathiastj'
+        git config --global user.email 'mathiastj@users.noreply.github.com'
         git commit -am "Updated price chart"
         git push
