@@ -5,6 +5,7 @@ from nordpool import elspot
 from pprint import pprint
 import matplotlib.pyplot as plt
 from matplotlib.ticker import StrMethodFormatter
+import sys
 
 # convert to dkk/kwh, add danish VAT of 25%, and round to 2 decimals. Price is in dkk/mWh
 def normalize(price):
@@ -24,6 +25,10 @@ formattedDate = date.strftime('%d/%m/%y')
 fileFormattedDate = date.strftime('%Y-%m-%d')
 
 priceValues = hourlyEastDenmarkPrices.get('areas',{}).get('DK2', {}).get('values', {})
+
+# exit if there is no data
+if len(priceValues) == 0:
+    sys.exit(0)
 
 # get the average
 average = normalize(hourlyEastDenmarkPrices.get('areas',{}).get('DK2', {}).get('Average',{}))
