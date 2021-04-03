@@ -7,6 +7,10 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import StrMethodFormatter
 import sys
 
+# define when power is considered expensive
+# to always have the same reference in the chart
+expensive = 0.5
+
 # convert to dkk/kwh, add danish VAT of 25%, and round to 2 decimals. Price is in dkk/mWh
 def normalize(price):
     return round(price*1.25/1000, 2)
@@ -53,8 +57,18 @@ plt.title(formattedDate)
 # set ticks
 plt.xticks([0,4,8,12,16,20,23])
 # add the average as a line
-plt.axhline(y=average, linewidth=1)
+plt.axhline(y=average, linewidth=1, linestyle='--')
+# add the expensive point of electricity as a line
+plt.axhline(y=expensive, linewidth=1, linestyle='--', color='r')
 # force two decimals on y axis
 plt.gca().yaxis.set_major_formatter(StrMethodFormatter('{x:,.2f}'))
+# tighten x limits around the hours
+plt.xlim(xmin=-0.5,xmax=23.5)
+# get borders
+x0,x1 = plt.gca().get_xlim()
+# add average text to average
+plt.text(x1+0.1, average, 'average')
+# add expensive text to expensive
+plt.text(x1+0.1, expensive, 'expensive').set_fontsize(8)
 # save the plot as file
-plt.savefig('daily_prices/' + fileFormattedDate + '.png')
+plt.savefig('daily_prices/' + fileFormattedDate + '.png', dpi=300)
