@@ -71,4 +71,4 @@ plt.text(x1+0.1, average, 'average')
 # add expensive text to expensive
 plt.text(x1+0.1, expensive, 'expensive').set_fontsize(8)
 # save the plot as file
-plt.savefig('daily_prices/' + fileFormattedDate + '.png', dpi=300)
+plt.savefig('daily_prices/' + fileFormattedDate + '.png', dpi=200)
