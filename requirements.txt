@@ -1,4 +1,4 @@
 # requirements.txt
 
-nordpool==0.3.2
-matplotlib==3.3.4
+nordpool==0.3.3
+matplotlib==3.9.0
