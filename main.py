@@ -38,11 +38,11 @@ if len(priceValues) == 0:
 if priceValues[0]['value'] == float('inf'):
     sys.exit(0)
 
-# get the average
-average = normalize(hourlyEastDenmarkPrices.get('areas',{}).get('DK2', {}).get('Average',{}))
 
 # normalize the prices
 normalizedPrices = [normalize(i['value']) for i in priceValues]
+# get the average
+average = sum(normalizedPrices) / len(normalizedPrices)
 
 # Create hours for x axis from 0-23
 hours = [x for x in range(len(normalizedPrices))]
